@@ -53,6 +53,12 @@ CONFIGURE_ARGS += \
 
 TARGET_LDFLAGS += -Wl,--as-needed
 
+define Build/Configure
+	(cd $(PKG_BUILD_DIR); [ -f ./autogen.sh ] && ./autogen.sh || autoreconf -fi)
+	chmod +x $(PKG_BUILD_DIR)/configure
+	$(call Build/Configure/Default)
+endef
+
 $(foreach component,$(SHADOWSOCKSR_COMPONENTS), \
   $(eval $(call BuildPackage,shadowsocksr-libev-ssr-$(component))) \
 )
