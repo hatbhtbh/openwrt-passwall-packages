@@ -5,8 +5,8 @@
 name: Auto Cache Software Release JSONs
 
 on:
-  schedule:
-    - cron: '17 */2 * * *'
+  #schedule:
+  #  - cron: '17 */2 * * *'
   workflow_dispatch:
 
 env:
